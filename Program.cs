@@ -20,7 +20,7 @@ namespace TaskManager
             {
                 Application.Run(new Form1());
             }
-            catch (Exception)
+            catch(Exception)
             { }
 
         }

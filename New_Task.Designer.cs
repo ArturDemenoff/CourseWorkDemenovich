@@ -114,7 +114,7 @@
             this.Status_combobox.Items.AddRange(new object[] {
             "Achieved",
             "Not performed",
-            "Postponed"});
+            "postponed"});
             this.Status_combobox.Location = new System.Drawing.Point(185, 106);
             this.Status_combobox.Name = "Status_combobox";
             this.Status_combobox.Size = new System.Drawing.Size(155, 21);

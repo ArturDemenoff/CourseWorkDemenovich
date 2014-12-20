@@ -22,6 +22,8 @@ namespace TaskManager
         [XmlAttribute]
         public string Result { get; set; }
 
+
+
         public Task(string date, string title, string description, string perfomer, string result)
         {
             this.Date = date;
@@ -30,6 +32,8 @@ namespace TaskManager
             this.Perfomer = perfomer;
             this.Result = result;
         }
+
+
 
         public Task()
         {
