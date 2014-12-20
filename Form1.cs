@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Text;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -15,18 +16,31 @@ namespace TaskManager
     public partial class Form1 : Form
     {
         public TaskManager task = new TaskManager();
+        List<Task> result = new List<Task>();
 
         public Form1()
         {
             
             InitializeComponent();
-            //dataGridView1.Columns[4] as DataGridViewComboBoxColumn;
-          //  DataGridViewComboBoxColumn qwer = new DataGridViewComboBoxColumn();
-            
-            dataGridView1.BackgroundColor = ColorTranslator.FromHtml("#454545");
+            this.BackColor = ColorTranslator.FromHtml("#fff");
             label1.Font = task.GetFont(25, "Cool.ttf");
-            Add.BackColor = ColorTranslator.FromHtml("#f2f2f2");
+            foreach(Control x in tabControl1.Controls)
+            {
+                if(x is TabPage)
+                {
+                    foreach (Control y in x.Controls)
+                    {
+                        if (y is Button)
+                            ((Button)y).BackColor = ColorTranslator.FromHtml("#00C8FF");
+                        if (y is DataGridView)
+                            ((DataGridView)y).BackgroundColor = ColorTranslator.FromHtml("#fff");
+                    }
+                }
+            }
             dataGridView1.DataSource = task.TasksList;
+            saveFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            saveFileDialog1.FilterIndex = 2;
+            saveFileDialog1.RestoreDirectory = true;
 
         }
 
@@ -40,7 +54,6 @@ namespace TaskManager
             New_Task a = new New_Task(this);
             a.Show();
         }
-        List<Task> result = new List<Task>();
         private void Search_Click(object sender, EventArgs e)
         {
             if(!result_cb.Checked)
@@ -62,11 +75,41 @@ namespace TaskManager
                 result = task.Search(result, Tags_LB.SelectedItem.ToString());
                 dataGridView2.DataSource = result;
             }
-
-            
-            
-
-
+            if (Title_TB.Text != string.Empty && Perfomer_TB.Text != string.Empty)
+            {
+                result = task.Search(result, Title_TB.Text , Perfomer_TB.Text);
+                dataGridView2.DataSource = result;
+            }
+            if (Title_TB.Text != string.Empty && Tags_LB.SelectedIndex != -1)
+            {
+                result = task.Search(result, Title_TB.Text, Tags_LB.SelectedItem.ToString());
+                dataGridView2.DataSource = result;
+            }
+            if (Perfomer_TB.Text != string.Empty && Tags_LB.SelectedIndex != -1)
+            {
+                result = task.Search(result, Perfomer_TB.Text, Tags_LB.SelectedItem.ToString());
+                dataGridView2.DataSource = result;
+            }
+            if(dateTimePicker1.Checked)
+            {
+                result = task.Search(result, dateTimePicker1.Value.ToShortDateString());
+                dataGridView2.DataSource = result;
+            }
+            if (dateTimePicker1.Checked == true && Tags_LB.SelectedIndex != -1)
+            {
+                result = task.Search(result, dateTimePicker1.Value.ToShortDateString(), Tags_LB.SelectedItem.ToString());
+                dataGridView2.DataSource = result;
+            }
+            if (dateTimePicker1.Checked == true && Perfomer_TB.Text != string.Empty)
+            {
+                result = task.Search(result, dateTimePicker1.Value.ToShortDateString(), Perfomer_TB.Text);
+                dataGridView2.DataSource = result;
+            }
+            if (dateTimePicker1.Checked == true && Title_TB.Text != string.Empty)
+            {
+                result = task.Search(result, dateTimePicker1.Value.ToShortDateString(), Title_TB.Text);
+                dataGridView2.DataSource = result;
+            }
         }
 
         private void Remove_Click(object sender, EventArgs e)
@@ -117,6 +160,30 @@ namespace TaskManager
                         Tags_LB.Items.Add(match.Groups[1].Value);
                     }
                 }
+        }
+
+        private void Save_BTN_Click(object sender, EventArgs e)
+        {
+            dataGridView3.DataSource = result;
+            tabControl1.SelectedIndex = 2;
+        }
+
+        private void Add_BTN_Click(object sender, EventArgs e)
+        {
+            New_Task a = new New_Task(this);
+            a.Show();
+        }
+
+        private void SaveBTN_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                using (StreamWriter sw = new  StreamWriter(saveFileDialog1.FileName))
+                {
+                    foreach (var a in result)
+                        sw.WriteLine(a.ToString());
+                }
+            }
         }
     }
 }

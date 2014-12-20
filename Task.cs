@@ -42,7 +42,7 @@ namespace TaskManager
 
         public override string ToString()
         {
-            return String.Concat(Date, " ", Title, " ", Perfomer, " ", Description);
+            return String.Concat(Date, " ", Title, " ", Perfomer, " ", Description, " ", Result);
         }
 
         public bool Equals(Task other)
