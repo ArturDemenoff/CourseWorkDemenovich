@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Xml.Serialization;
 
 namespace TaskManager
@@ -20,7 +21,7 @@ namespace TaskManager
             {
                 TasksList.RemoveAt(index);
             }
-            catch(IndexOutOfRangeException)
+            catch (IndexOutOfRangeException)
             {
                 return false;
             }
@@ -28,7 +29,7 @@ namespace TaskManager
             return true;
         }
 
-        public void Save(List<Task> obj,string filepath)
+        public void Save(List<Task> obj, string filepath)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(List<Task>));
 
@@ -61,9 +62,9 @@ namespace TaskManager
         {
             List<Task> search = new List<Task>();
 
-            foreach(var a in obj)
+            foreach (var a in obj)
             {
-                if((a.ToString()).Contains(param))
+                if ((a.ToString()).Contains(param))
                 {
                     search.Add(a);
                 }
@@ -84,6 +85,25 @@ namespace TaskManager
             }
 
             return search;
+        }
+
+        public void ColorRows(DataGridView obj, List<Task> list)
+        {
+            for (int j = 0; j < obj.Rows.Count; j++)
+            {
+                if (obj.Rows[j].Cells[4].Value.ToString() == "Achieved")
+                {
+                    obj.Rows[j].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#23BF00");
+                }
+                if (obj.Rows[j].Cells[4].Value.ToString() == "Not performed")
+                {
+                    obj.Rows[j].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#BF0000");
+                }
+                if (obj.Rows[j].Cells[4].Value.ToString() == "Postponed")
+                {
+                    obj.Rows[j].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#FFF41C");
+                }
+            }
         }
     }
 }
