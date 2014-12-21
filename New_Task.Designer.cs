@@ -39,6 +39,8 @@
             this.Status_combobox = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.tpLastDate = new System.Windows.Forms.DateTimePicker();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // dateTimePicker1
@@ -57,7 +59,7 @@
             // 
             // Description_TB
             // 
-            this.Description_TB.Location = new System.Drawing.Point(12, 64);
+            this.Description_TB.Location = new System.Drawing.Point(12, 112);
             this.Description_TB.Multiline = true;
             this.Description_TB.Name = "Description_TB";
             this.Description_TB.Size = new System.Drawing.Size(155, 63);
@@ -66,9 +68,9 @@
             // Add
             // 
             this.Add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Add.Location = new System.Drawing.Point(346, 25);
+            this.Add.Location = new System.Drawing.Point(185, 133);
             this.Add.Name = "Add";
-            this.Add.Size = new System.Drawing.Size(82, 107);
+            this.Add.Size = new System.Drawing.Size(155, 42);
             this.Add.TabIndex = 3;
             this.Add.Text = "Add";
             this.Add.UseVisualStyleBackColor = true;
@@ -114,7 +116,7 @@
             this.Status_combobox.Items.AddRange(new object[] {
             "Achieved",
             "Not performed",
-            "postponed"});
+            "Postponed"});
             this.Status_combobox.Location = new System.Drawing.Point(185, 106);
             this.Status_combobox.Name = "Status_combobox";
             this.Status_combobox.Size = new System.Drawing.Size(155, 21);
@@ -132,18 +134,36 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(50, 48);
+            this.label5.Location = new System.Drawing.Point(50, 96);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(60, 13);
             this.label5.TabIndex = 10;
             this.label5.Text = "Description";
+            // 
+            // tpLastDate
+            // 
+            this.tpLastDate.Location = new System.Drawing.Point(13, 73);
+            this.tpLastDate.Name = "tpLastDate";
+            this.tpLastDate.Size = new System.Drawing.Size(150, 20);
+            this.tpLastDate.TabIndex = 11;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(53, 52);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(50, 13);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "LastDate";
             // 
             // New_Task
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(440, 133);
+            this.ClientSize = new System.Drawing.Size(351, 185);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.tpLastDate);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.Status_combobox);
@@ -175,5 +195,7 @@
         private System.Windows.Forms.ComboBox Status_combobox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DateTimePicker tpLastDate;
+        private System.Windows.Forms.Label label6;
     }
 }

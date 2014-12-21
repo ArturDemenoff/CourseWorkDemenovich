@@ -35,6 +35,7 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.Save_BTN = new System.Windows.Forms.Button();
             this.Tags_LB = new System.Windows.Forms.ListBox();
             this.result_cb = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -46,13 +47,12 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.SaveBTN = new System.Windows.Forms.Button();
+            this.Remove_BTN = new System.Windows.Forms.Button();
+            this.Add_BTN = new System.Windows.Forms.Button();
+            this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.Save_BTN = new System.Windows.Forms.Button();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.Add_BTN = new System.Windows.Forms.Button();
-            this.Remove_BTN = new System.Windows.Forms.Button();
-            this.SaveBTN = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -77,7 +77,7 @@
             // 
             this.Add.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Add.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Add.Location = new System.Drawing.Point(6, 6);
+            this.Add.Location = new System.Drawing.Point(403, 356);
             this.Add.Name = "Add";
             this.Add.Size = new System.Drawing.Size(75, 23);
             this.Add.TabIndex = 1;
@@ -90,7 +90,7 @@
             this.Remove.BackColor = System.Drawing.Color.Transparent;
             this.Remove.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Remove.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Remove.Location = new System.Drawing.Point(87, 6);
+            this.Remove.Location = new System.Drawing.Point(488, 356);
             this.Remove.Name = "Remove";
             this.Remove.Size = new System.Drawing.Size(75, 23);
             this.Remove.TabIndex = 2;
@@ -103,10 +103,10 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Location = new System.Drawing.Point(12, 100);
+            this.tabControl1.Location = new System.Drawing.Point(-2, 86);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(799, 406);
+            this.tabControl1.Size = new System.Drawing.Size(586, 415);
             this.tabControl1.TabIndex = 4;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
@@ -118,7 +118,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(791, 380);
+            this.tabPage1.Size = new System.Drawing.Size(578, 389);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Tasks";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -128,12 +128,13 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 34);
+            this.dataGridView1.Location = new System.Drawing.Point(6, 6);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(779, 340);
+            this.dataGridView1.Size = new System.Drawing.Size(557, 340);
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDoubleClick);
+            this.dataGridView1.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_ColumnHeaderMouseClick);
             // 
             // tabPage2
             // 
@@ -151,10 +152,21 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(791, 380);
+            this.tabPage2.Size = new System.Drawing.Size(578, 389);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Search";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // Save_BTN
+            // 
+            this.Save_BTN.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Save_BTN.Location = new System.Drawing.Point(165, 320);
+            this.Save_BTN.Name = "Save_BTN";
+            this.Save_BTN.Size = new System.Drawing.Size(398, 54);
+            this.Save_BTN.TabIndex = 13;
+            this.Save_BTN.Text = "Save";
+            this.Save_BTN.UseVisualStyleBackColor = true;
+            this.Save_BTN.Click += new System.EventHandler(this.Save_BTN_Click);
             // 
             // Tags_LB
             // 
@@ -239,8 +251,10 @@
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Location = new System.Drawing.Point(165, 6);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(620, 308);
+            this.dataGridView2.Size = new System.Drawing.Size(398, 308);
             this.dataGridView2.TabIndex = 0;
+            this.dataGridView2.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView2_CellMouseDoubleClick);
+            this.dataGridView2.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView2_ColumnHeaderMouseClick);
             // 
             // tabPage3
             // 
@@ -251,54 +265,10 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(791, 380);
+            this.tabPage3.Size = new System.Drawing.Size(578, 389);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Edit";
             this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // Save_BTN
-            // 
-            this.Save_BTN.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Save_BTN.Location = new System.Drawing.Point(165, 320);
-            this.Save_BTN.Name = "Save_BTN";
-            this.Save_BTN.Size = new System.Drawing.Size(620, 54);
-            this.Save_BTN.TabIndex = 13;
-            this.Save_BTN.Text = "Save";
-            this.Save_BTN.UseVisualStyleBackColor = true;
-            this.Save_BTN.Click += new System.EventHandler(this.Save_BTN_Click);
-            // 
-            // dataGridView3
-            // 
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(136, 6);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(649, 368);
-            this.dataGridView3.TabIndex = 0;
-            // 
-            // Add_BTN
-            // 
-            this.Add_BTN.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Add_BTN.Location = new System.Drawing.Point(6, 6);
-            this.Add_BTN.Name = "Add_BTN";
-            this.Add_BTN.Size = new System.Drawing.Size(124, 51);
-            this.Add_BTN.TabIndex = 1;
-            this.Add_BTN.Text = "Add";
-            this.Add_BTN.UseVisualStyleBackColor = true;
-            this.Add_BTN.Click += new System.EventHandler(this.Add_BTN_Click);
-            // 
-            // Remove_BTN
-            // 
-            this.Remove_BTN.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Remove_BTN.Location = new System.Drawing.Point(7, 64);
-            this.Remove_BTN.Name = "Remove_BTN";
-            this.Remove_BTN.Size = new System.Drawing.Size(123, 55);
-            this.Remove_BTN.TabIndex = 2;
-            this.Remove_BTN.Text = "Remove";
-            this.Remove_BTN.UseVisualStyleBackColor = true;
             // 
             // SaveBTN
             // 
@@ -311,17 +281,53 @@
             this.SaveBTN.UseVisualStyleBackColor = true;
             this.SaveBTN.Click += new System.EventHandler(this.SaveBTN_Click);
             // 
+            // Remove_BTN
+            // 
+            this.Remove_BTN.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Remove_BTN.Location = new System.Drawing.Point(7, 64);
+            this.Remove_BTN.Name = "Remove_BTN";
+            this.Remove_BTN.Size = new System.Drawing.Size(123, 55);
+            this.Remove_BTN.TabIndex = 2;
+            this.Remove_BTN.Text = "Remove";
+            this.Remove_BTN.UseVisualStyleBackColor = true;
+            this.Remove_BTN.Click += new System.EventHandler(this.Remove_BTN_Click);
+            // 
+            // Add_BTN
+            // 
+            this.Add_BTN.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Add_BTN.Location = new System.Drawing.Point(6, 6);
+            this.Add_BTN.Name = "Add_BTN";
+            this.Add_BTN.Size = new System.Drawing.Size(124, 51);
+            this.Add_BTN.TabIndex = 1;
+            this.Add_BTN.Text = "Add";
+            this.Add_BTN.UseVisualStyleBackColor = true;
+            this.Add_BTN.Click += new System.EventHandler(this.Add_BTN_Click);
+            // 
+            // dataGridView3
+            // 
+            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView3.Location = new System.Drawing.Point(136, 6);
+            this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.Size = new System.Drawing.Size(427, 368);
+            this.dataGridView3.TabIndex = 0;
+            this.dataGridView3.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView3_CellMouseDoubleClick);
+            this.dataGridView3.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView3_ColumnHeaderMouseClick);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.GhostWhite;
-            this.ClientSize = new System.Drawing.Size(823, 518);
+            this.ClientSize = new System.Drawing.Size(577, 495);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Task Manager";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);

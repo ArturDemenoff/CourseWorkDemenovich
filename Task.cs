@@ -13,6 +13,8 @@ namespace TaskManager
     {
         [XmlAttribute]
         public string Date { get; set; }
+        [XmlAttribute]
+        public string LastDate { get; set; }
         [XmlElement]
         public string Title { get; set; }
         [XmlElement]
@@ -22,18 +24,15 @@ namespace TaskManager
         [XmlAttribute]
         public string Result { get; set; }
 
-
-
-        public Task(string date, string title, string description, string perfomer, string result)
+        public Task(string date, string lastdate,string title, string description, string perfomer, string result)
         {
             this.Date = date;
+            this.LastDate = lastdate;
             this.Title = title;
             this.Description = description;
             this.Perfomer = perfomer;
             this.Result = result;
         }
-
-
 
         public Task()
         {
@@ -42,12 +41,12 @@ namespace TaskManager
 
         public override string ToString()
         {
-            return String.Concat(Date, " ", Title, " ", Perfomer, " ", Description, " ", Result);
+            return String.Concat(Date, " ", Title, " ", Perfomer, " ", Description, " ", Result, " ", LastDate);
         }
 
         public bool Equals(Task other)
         {
-            if (this.Date == other.Date && this.Description == other.Description && this.Perfomer == other.Perfomer && this.Result == other.Result && this.Title == other.Title)
+            if (this.Date == other.Date && this.Description == other.Description && this.Perfomer == other.Perfomer && this.Result == other.Result && this.Title == other.Title && this.LastDate == other.LastDate)
                 return true;
             return false;
         }
